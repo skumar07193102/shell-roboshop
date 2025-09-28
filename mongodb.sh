@@ -14,6 +14,21 @@ if [ $? -eq 0 ]; then
 fi
 sudo systemctl enable mongod
 sudo systemctl start mongod 
-
+aws route53 change-resource-record-sets \
+    --hosted-zone-id $Hosted_zone_ID \
+    --change-batch '
+    {
+        "Comment": "Updating record set"
+        ,"Changes": [{
+        "Action"              : "UPSERT"
+        ,"ResourceRecordSet"  : {
+            "Name"              : "'$record_name'"
+            ,"Type"             : "A"
+            ,"TTL"              : 1
+            ,"ResourceRecords"  : [{
+                "Value"         : "'$instance_ip'"
+            }]
+        }
+        }]
 
 
