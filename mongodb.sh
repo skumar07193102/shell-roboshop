@@ -10,7 +10,7 @@ record_name=$instance_name.$Domain
 echo "successfully created $instance_name server : $instance_ip"
 sudo cp mongo.repo /etc/yum.repos.d/
 if [ $? -eq 0 ]; then
-    dnf install mongodb-org -y
+    sudo dnf install mongodb-org -y
 fi
 systemctl enable mongod
 systemctl start mongod 
