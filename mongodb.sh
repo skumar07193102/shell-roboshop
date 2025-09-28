@@ -14,7 +14,7 @@ if [ $? -eq 0 ]; then
 fi
 sudo systemctl enable mongod
 sudo systemctl start mongod 
-aws route53 change-resource-record-sets \
+    aws route53 change-resource-record-sets \
     --hosted-zone-id $Hosted_zone_ID \
     --change-batch '
     {
@@ -30,5 +30,7 @@ aws route53 change-resource-record-sets \
             }]
         }
         }]
+    }
+    '
 
 
