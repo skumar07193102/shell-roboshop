@@ -12,8 +12,8 @@ sudo cp mongo.repo /etc/yum.repos.d/
 if [ $? -eq 0 ]; then
     sudo dnf install mongodb-org -y
 fi
-systemctl enable mongod
-systemctl start mongod 
+sudo systemctl enable mongod
+sudo systemctl start mongod 
 
 
 
