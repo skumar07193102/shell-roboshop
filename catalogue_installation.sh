@@ -6,6 +6,7 @@ N="\e[0m"
 user=$(id -u)
 if [ $user -ne 0 ]; then
     echo -e " run the script with $R root previliges $N"
+    exit 1
 fi
 Hostname=mongodb.devsecops86s.space
 logfolder=/var/log/catalogue-practice/
