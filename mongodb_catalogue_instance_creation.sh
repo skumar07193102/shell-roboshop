@@ -11,7 +11,7 @@ do
     --instance-type $instance_type \
     --security-group-ids $SG \
     --tag-specifications "'ResourceType=instance,Tags=[{Key=Name,Value=$instance}]'")
-if[ $instance != frontend ]; then
+if[ $instance != "frontend" ]; then
     IP=$(aws ec2 describe-instances \
     --instance-ids $instance_id \
     --query 'Reservations[*].Instances[*].{PrivateIP:PrivateIpAddress}' \
