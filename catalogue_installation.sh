@@ -34,7 +34,7 @@ mkdir -p /app &>>$logfilename
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$logfilename
 VALIDATE $? " donwloading the catalogue code"
 cd /app
-unzip /tmp/catalogue.zip &>>$logfilename
+unzip /tmp/catalogue.zip 
 VALIDATE $? " extracting the archieve"
 npm install &>>$logfilename
 VALIDATE $? "Dependencies are installed"
