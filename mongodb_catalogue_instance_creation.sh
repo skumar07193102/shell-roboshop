@@ -36,10 +36,4 @@ aws route53 change-resource-record-sets \
         }]
     }
     '
-username=ec2-user
-ssh $username@$IP
-read password
-echo "enter the password"
-User=$(id -u)
-echo " logged in as $User"
 done
