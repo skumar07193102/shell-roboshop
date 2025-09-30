@@ -24,7 +24,7 @@ VALIDATE (){
 dnf module install nodejs:20 -y &>>$logfilename
 VALIDATE $? "installing Nodejs"
 id roboshop
-if [ $? -ne 0 ]; then
+if [ $? -eq 0 ]; then
     echo "User already exists $Y SKIPPING $N"
 else
     useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
@@ -36,7 +36,7 @@ VALIDATE $? " donwloading the catalogue code"
 cd /app
 unzip /tmp/catalogue.zip &>>$logfilename
 VALIDATE $? " extracting the archieve"
-nom install &>>$logfilename
+npm install &>>$logfilename
 VALIDATE $? "Dependencies are installed"
 cp /home/ec2-user/shell-roboshop/catalogue.service /etc/systemd/system/
 systemctl daemon-reload
