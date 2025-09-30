@@ -18,7 +18,7 @@ VALIDATE (){
         echo -e " $2 is $G Successfull $N "
     fi
 }
-cp /home/ec2-user/shell-roboshop/mongo.rep /etc/yum.repos.d/
+cp /home/ec2-user/shell-roboshop/mongo.repo /etc/yum.repos.d/
 dnf install mongodb-org -y
 VALIDATE $? "Installing MongoDB"
 systemctl start mongod
