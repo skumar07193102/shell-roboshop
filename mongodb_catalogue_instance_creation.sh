@@ -11,21 +11,21 @@ do
     --instance-type $instance_type \
     --security-group-ids $SG \
     --tag-specifications "'ResourceType=instance,Tags=[{Key=Name,Value=$instance}]'")
-if[ $instance != "frontend" ]; then
+    if[ $instance != "frontend" ]; then
     IP=$(aws ec2 describe-instances \
     --instance-ids $instance_id \
     --query 'Reservations[*].Instances[*].{PrivateIP:PrivateIpAddress}' \
     --output text)
     servername=$instance
     record_name=$instance.$Domain
-else 
+    else 
     IP=$(aws ec2 describe-instances \
     --instance-ids $instance-id \
     --query 'Reservations[*].Instances[*].{PublicIP:PublicIpAddress}' \
     --output text)
     servername=$instance
     record_name=$Domain
-fi
+    fi
 done
 echo  "$instance($instance_id) : $IP"
 aws route53 change-resource-record-sets \
