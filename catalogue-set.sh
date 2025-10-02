@@ -24,8 +24,8 @@ logfilename=$logfolder/$scriptname.log
 #     fi
 # }
 dnf module install nodejs:20 | tee -a $logfilename
-id roboshop
-if [ $? -e 0 ]; then
+user=$(id robotshop)
+if [ $user -eq 0 ]; then
     echo "User already exists $Y SKIPPING $N"
 else
     useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
@@ -40,7 +40,7 @@ cp /home/ec2-user/shell-roboshop/catalogue.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable catalogue
 systemctl start catalogue  
-cp /home/ec2-user/shell-roboshop/mongo.repo /etc/yum.repos.d/
+cp /home/ec2-user/shell-roboshop/mongo.repo /etc/yum.repos.d/yum
 dnf install mongodb-mongosh -y &>>$logfilename
 INDEX=$(mongosh $Hostname --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')")
 if [ $INDEX -le 0 ]; then
