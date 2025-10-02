@@ -23,9 +23,9 @@ logfilename=$logfolder/$scriptname.log
 #         echo -e " $2 is $G Successfull $N "
 #     fi
 # }
-dnf module install nodejs:20 -y &>>$logfilename
+dnf module install nndejs:20 -y &>>$logfilename
 id roboshop
-if [ $? -eq 0 ]; then
+if [ $? -e 0 ]; then
     echo "User already exists $Y SKIPPING $N"
 else
     useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
