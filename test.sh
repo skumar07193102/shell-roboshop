@@ -22,7 +22,7 @@ logfilename=$logfolder/$scriptname.log
 #     fi
 # }
 dnf module install nodejs:20 | tee -a $logfilename
-user=$(id roboshop)
+user=$(id roboshop) || true
 if [ $user -eq 0 ]; then 
     echo "User already exists $Y SKIPPING $N"
  else
