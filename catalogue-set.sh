@@ -23,7 +23,7 @@ logfilename=$logfolder/$scriptname.log
 #         echo -e " $2 is $G Successfull $N "
 #     fi
 # }
-dnf module install nndejs:20 -y &>>$logfilename
+dnf module install nodejs:20 | tee -a $logfilename
 id roboshop
 if [ $? -e 0 ]; then
     echo "User already exists $Y SKIPPING $N"
