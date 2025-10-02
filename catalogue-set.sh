@@ -27,9 +27,9 @@ dnf module install nodejs:20 | tee -a $logfilename
 user=$(cat /etc/passwd | grep -i roboshop) &>>$logfilename
 if [ $user -e 0 ]; then
     echo "User already exists $Y SKIPPING $N"
-else
-    useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
-    echo " $G successfully created the user $N"
+# else
+#     useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+#     echo " $G successfully created the user $N"
 fi
 mkdir -p /app &>>$logfilename
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$logfilename
