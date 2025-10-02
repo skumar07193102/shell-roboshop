@@ -24,7 +24,8 @@ logfilename=$logfolder/$scriptname.log
 #     fi
 # }
 dnf module install nodejs:20 | tee -a $logfilename
-if [ user=$(id roboshop) -eq 0 ]; then
+user=cat /etc/passwd | grep -i roboshop
+if [ $user -eq 0 ]; then
     echo "User already exists $Y SKIPPING $N"
 else
     useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
