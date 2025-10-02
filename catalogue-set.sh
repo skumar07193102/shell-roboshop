@@ -39,7 +39,7 @@ cp /home/ec2-user/shell-roboshop/catalogue.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable catalogue
 systemctl start catalogue  
-cp /home/ec2-user/shell-roboshop/mongo.repo /etc/yum.repos.d/yum
+cp /home/ec2-user/shell-roboshop/mongo.repo /etc/yum.repos.d/
 dnf install mongodb-mongosh -y &>>$logfilename
 INDEX=$(mongosh $Hostname --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')")
 if [ $INDEX -le 0 ]; then
